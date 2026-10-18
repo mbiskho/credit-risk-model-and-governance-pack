@@ -1,0 +1,18 @@
+flowchart LR
+    DEV["Model<br/>Development"] -->|"MDD + evidence<br/>package"| IV["Independent<br/>Validation"]
+    IV -->|"validation<br/>report"| MRC["Model Risk<br/>Committee"]
+    MRC -->|"approval<br/>record"| PROD["Production<br/>Deployment"]
+
+    DEV -.->|"rejected"| DEV
+    IV -.->|"rejected"| DEV
+    MRC -.->|"rejected"| DEV
+
+    REG["Model Register<br/>(append-only)"] --- DEV
+    REG --- IV
+    REG --- MRC
+
+    style DEV fill:#4a90d9,color:#fff
+    style IV fill:#e8a838,color:#fff
+    style MRC fill:#50b86c,color:#fff
+    style PROD fill:#6c5ce7,color:#fff
+    style REG fill:#2d3436,color:#fff
